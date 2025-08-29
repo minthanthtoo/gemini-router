@@ -34,11 +34,11 @@ A **Python-based routing system** for Google Gemini Generative Models with **mul
 ```bash
 git clone https://github.com/minthanthtoo/gemini-router.git
 cd gemini-router
-
+```
 	2.	Install dependencies:
-
+```
 pip install -r requirements.txt
-
+```
 Dependencies:
 	•	Python ≥ 3.10
 	•	google-generativeai
@@ -51,9 +51,11 @@ Configuration
 
 Set one or more Gemini API keys in environment variables:
 
+```
 export GEMINI_API_KEY_1="your_api_key_1"
 export GEMINI_API_KEY_2="your_api_key_2"
 # ... add as many keys as needed
+```
 
 2. Optional Configs
 	•	ROLLING_WINDOW: Number of recent entries to track per model (default 20)
@@ -64,7 +66,9 @@ Usage
 
 Run the main CLI script:
 
+```
 python gemini_router.py <command> [options]
+```
 
 CLI Commands
 
@@ -78,12 +82,13 @@ lock <model>	Lock router to a specific model
 unlock	Unlock the router from a locked model
 
 Example:
-
+```
 python gemini_router.py rank
 python gemini_router.py tiers
 python gemini_router.py route "Write a short story about AI in space"
 python gemini_router.py lock models/gemini-2.0-flash-lite
 python gemini_router.py unlock
+```
 
 Architecture
 	1.	State Management
