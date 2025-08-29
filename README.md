@@ -112,7 +112,7 @@ python gemini_router.py unlock
 - Metrics used: latency, max_tokens, success_rate
 - Tiering is dynamically updated based on rolling stats
 
-##Tier Assignment Logic
+**Tier Assignment Logic**
 
 | Tier | Criteria                                                      |
 |------|---------------------------------------------------------------|
@@ -129,37 +129,37 @@ balance_score = (1 - success_rate)*1000 + latency - max_tokens*0.1
 
 Combines latency, max output tokens, and success rate into a single score
 
-API Key Rotation
+**API Key Rotation**
 	•	Iterates through all available API keys for a given model
 	•	Updates stats and cooldowns on failure
 	•	Ensures robust routing even under rate-limit constraints
 
-Async Probing
+**Async Probing**
 - Concurrently probes all unlocked models using asyncio
 - Collects latency and success data for tier assignment
 - Can be run manually via python gemini_router.py rank
 
-State Management
+**State Management**
 
 Files used to persist data:
-	•	model_stats.json → Rolling stats for all models
-	•	cooldowns.json → Cooldown timestamps for failed models
-	•	router_state.json → Current router lock state
+- model_stats.json → Rolling stats for all models
+- cooldowns.json → Cooldown timestamps for failed models
+- router_state.json → Current router lock state
 
 All files are automatically created and updated. Thread-safe operations ensure consistent state under parallel execution.
 
 ## Contributing
-	1.	Fork the repository
-	2.	Create a feature branch: git checkout -b feature-name
-	3.	Commit changes: git commit -m "Add feature"
-	4.	Push to branch: git push origin feature-name
-	5.	Open a Pull Request
+1.	Fork the repository
+2.	Create a feature branch: git checkout -b feature-name
+3.	Commit changes: git commit -m "Add feature"
+4.	Push to branch: git push origin feature-name
+5.	Open a Pull Request
 
 ## Ideas for Contributions:
-	•	Add normalized tier scoring
-	•	Support async API key rotation
-	•	Implement logging and monitoring dashboards
-	•	Add unit tests for routing and tier logic
+- Add normalized tier scoring
+- Support async API key rotation
+- Implement logging and monitoring dashboards
+- Add unit tests for routing and tier logic
 
 ## License
 
